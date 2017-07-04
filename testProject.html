@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="testProject.js"></script>
+	<title></title>
+</head>
+<body>
+
+	Enter the number of big test <input id="total" value="1" oninput="testCreate()">
+	<br>
+	
+	<div class ="default">
+		<p>Your current grade: <a class ="current-grade"></a> </p>
+		<br>
+		Enter the percentage <input class ="percentage" value="" oninput = "Compute_percentage(0)"
+		name ="0">
+		Enter the number of mini-test <input class="theId" value="" oninput ="createTest(0)" name ="0" >
+		<br>
+		<p class = "result"></p>
+ 	</div>
+ 	<p id ="content"></p>
+ 	<div><button onclick = "GPA_grade()">CALCULATE</button><p id="final_grade"></p>
+ 	 </div>
+</body>
+</html>
