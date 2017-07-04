@@ -1,0 +1,45 @@
+Muc dich: 
+	tao mot website de uoc luong gpa hoc sinh
+	
+	input: so luong bai test, % moi bai, goal 
+	
+	output: calculate diem hien tai cua hoc sinh,
+			estimate grade can dat duoc cua moi bai test con lai
+	
+Viec can lam:
+	
+	Need to design, draw the web before coding: (html/css)
+		read through UI/Ux if needed
+		give all the variable name for the Algo team ( avoiding conflict in variable name btw html/css/jvscr )
+	
+	Algo (java script):
+	
+		Every ungraded test will be treat equally:
+		vd: 90*10% + 90*20% + 90*30% + x*15 + x*25 = final_grade
+		(can ban luan them qua skype)
+		
+Update (after did every task above):
+	
+	improving the algo: (eg: low % test will be different from high % test when estimate) *will disscuss through skype
+	
+	Make it responsive (bootstrap)
+	
+	Save user grade (avoiding typing the grade whenever reload pages) -> database, back endstuff(SQL, python-django) 
+	
+	more feature: add multiple  subject ( eg:computer science, math...)
+				 number of hours spends on studying to get <goal> grade
+	add url, domain for web
+				 
+				 
+	
+	
+Add more!
+				
+				 
+				
+	
+		
+	
+	
+	 	
+	
