@@ -58,7 +58,7 @@ function Compute_percentage(n){
 	var final_grade = total/denominator;
 	grade_and_percentage.push(final_grade);
 	grade_and_percentage.push(percentage);
-	document.getElementsByClassName("current-grade")[n].innerHTML = final_grade;
+	// document.getElementsByClassName("current-grade")[n].innerHTML = final_grade;
 	return grade_and_percentage;
 }
 
@@ -119,10 +119,16 @@ function Estimate(){
 	var goal = document.getElementById("goal").value;
 	if (estimate_percentage != 0){
 		var estimate_score = ((parseInt(goal)-current_test_score))/estimate_percentage;
+		if (estimate_score >100){
+			document.getElementById("warning").innerHTML = "YOU WILL NEVER REACH YOUR GOAL LOL!";
+			return;
+		}
 		estimate_score = estimate_score.toString();
 	}
-	else
-		console.log("ERROR");
+	else{
+		document.getElementById("warning").innerHTML = "YOU DONT HAVE ANY TEST LEFT TO ESTIMATE";
+		return;
+	}
 	for (var i = 0; i < val ; i++ ){
 		var result = document.getElementsByClassName("result")[i];
 		var number = document.getElementsByClassName("theId")[i].value;
