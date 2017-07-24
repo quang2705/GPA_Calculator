@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+    <title>GPA Calculator</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="css/clean-blog.css" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="practice.css">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+
+    <script type="text/javascript" src="testProject.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url('img/home-bg.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="site-heading">
+                        <h1>GPA Calculator</h1>
+                        <hr class="small">
+                        <span class="subheading">The website is used to calculate a student's current GPA and estimate the average grade that he/she needs in order to reaches his/her goal. </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="text-left container">
+      <ul class="nav nav-tabs">
+        <li class="active col-sm-6"><a data-toggle="tab" href="#home">GPA Estimation</a></li>
+        <li class=" col-sm-6"><a data-toggle="tab" href="#menu1">GPA Calculation</a></li>
+      </ul>
+
+      <div class="tab-content">
+        <div id="home" class="tab-pane fade in active">
+            <div class="form-group">
+                <label>Set Your Goal(100 Point Scale)</label></br>
+                <input class="form-control"id="goal" value = ""></p>
+            </div>
+
+            <div class="form-group">
+                <label>Enter The Number of Assignments</label></br>
+                <input class="form-control"id="bigTest" value="1" oninput="CreateBigTest()">
+            </div>
+
+            <div class ="default">
+            <!--    <p>Your current grade: <a class ="current-grade"></a> </p>
+            <br> -->
+                <p>Assignment 1</p>
+                <p>Percentage
+                <input class ="percentage" value="100" oninput = "Grade_and_percentage(0)">  Enter The Number of Test <input class="smallTest" value="1" oninput ="createTest(0)">
+                </p>
+            <br>
+            <p class = "list_miniTest">Enter Test Grade<input type="text" value = "100" oninput="test_score(0)"></p>
+            </div>
+            <p id ="content"></p>
+            <div>
+                <button onclick = "GPA_grade()">CALCULATE</button>
+                <p id="final_grade"></p>
+            </div>
+            <div id ="estimate">
+                <button onclick = "Estimate()">ESTIMATE</button>
+                <p id ="warning"></p>
+            </div>
+        </div>
+      <div id="menu1" class="tab-pane fade">
+        <h3>Menu 1</h3>
+      </div>
+
+      </div>
+    </div>
+ 
+  </div>
+  </div>
+</div>
+<footer class="container-fluid text-center">
+  <p>Footer Text</p>
+</footer>
+</body>
+</html>
