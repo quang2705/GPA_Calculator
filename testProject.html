@@ -6,35 +6,26 @@
 </head>
 <body>
 
-	SET YOUR GOAL FOR THIS SEMESTER(100 point scale)<input id="goal" value = "">
-	<br>
-
-	Enter the number of big test <input id="bigTest" value="1" oninput="CreateBigTest()">
-	<br>
-
+	<p>SET YOUR GOAL FOR THIS SEMESTER(100 point scale)<input id="goal" value = ""></p>
+	<p>Enter the number of big test<input id="bigTest" value="1" oninput="CreateBigTest()"></p>
 	<div class ="default">
-<!-- 		<p>Your current grade: <a class ="current-grade"></a> </p>
+		<!-- 		<p>Your current grade: <a class ="current-grade"></a> </p>
 		<br> -->
-		Enter the percentage <input class ="percentage" value="100" oninput = "Grade_and_percentage(0)">
-		
-		Enter the number of mini-test <input class="smallTest" value="1" oninput ="createTest(0)">
+		<p>Enter the percentage<input class ="percentage" value="100" oninput = "Grade_and_percentage(0)">
+		Enter the number of mini-test<input class="smallTest" value="1" oninput ="createTest(0)"></p>
 		<br>
-		<p class = "list_miniTest">
-			<input type="text" value = "100" oninput="test_score(0)">
+		<p class = "list_miniTest"><input type="text" value = "100" oninput="test_score(0)">
 		</p>
-
  	</div>
- 	
  	<p id ="content"></p>
- 	
  	<div>
  		<button onclick = "GPA_grade()">CALCULATE</button>
  		<p id="final_grade"></p>
- 	 </div>
-
- 	 <div id ="estimate">
+ 	</div>
+ 	<div id ="estimate">
  	 	<button onclick = "Estimate()">ESTIMATE</button>
  	 	<p id ="warning"></p>
- 	 </div>
+ 	</div>
+ 	
 </body>
 </html>
