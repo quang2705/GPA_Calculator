@@ -7,7 +7,7 @@ function createTest(n){
 	}
 	if (number_miniTest <= 20){	
 		for (var i = 0 ; i < number_miniTest; i++){
-			var text =  document.createTextNode("Enter test grade");
+			var text =  document.createTextNode("Enter Test Grade ");
 			var input = document.createElement("INPUT");
 			input.setAttribute("type","text");
 			input.setAttribute("oninput","test_score("+n+")");
@@ -33,7 +33,7 @@ function CreateBigTest(){
 		for (var i = 1; i <bt ; i++){	
 			var original = document.getElementsByClassName("default")[0];
 			var clone = original.cloneNode(true); 
-			clone.getElementsByTagName("p")[0].innerHTML = "Big Test "+(i+1)+ ":"
+			clone.getElementsByTagName("p")[0].innerHTML = "Assignment "+(i+1);
 			con.appendChild(clone);
 			var per = document.getElementsByClassName("percentage")[i];
 			var miniTest = document.getElementsByClassName("smallTest")[i];
