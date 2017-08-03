@@ -1,45 +1,97 @@
-function createTest(n){
-	n = parseInt(n);
-	var number_miniTest = document.getElementsByClassName("smallTest")[n].value;
-	var list_miniTest = document.getElementsByClassName("list_miniTest")[n];
-	while (list_miniTest.firstChild){
-		list_miniTest.removeChild(list_miniTest.firstChild);
+function CreateSyllabus(){
+	var bt = document.getElementById("bigTest").value;
+	var second_table = document.getElementById("second-table");
+	var headline = second_table.getElementsByClassName("headline")[0];
+	var title_grade = second_table.getElementsByClassName("title-grade")[0];
+	var table_body = second_table.getElementsByClassName("table-body")[0];
+	
+	while(table_body.lastChild && table_body.childElementCount != 2){
+		table_body.removeChild(table_body.lastChild);
 	}
-	if (number_miniTest <= 20){	
-		for (var i = 0 ; i < number_miniTest; i++){
-			var text =  document.createTextNode("Enter Test Grade ");
-			var input = document.createElement("INPUT");
-			input.setAttribute("type","text");
-			input.setAttribute("oninput","test_score("+n+")");
-			list_miniTest.appendChild(text);
-			list_miniTest.appendChild(input);
-			list_miniTest.appendChild(document.createElement("br"));
+	var assign  = headline.children[0].children[0];
+	var per = headline.children[0].children[1];
+	assign.innerHTML = document.getElementsByClassName("assignment")[0].value;
+	per.innerHTML = "Percentage : "+ document.getElementsByClassName("percentage")[0].value+"%";
+	title_grade .children[0].children[0].innerHTML = assign.innerHTML+"1";
+
+	if (bt <=15){
+		var number_miniTest = document.getElementsByClassName("smallTest")[0].value;
+		for(var n = 1; n< number_miniTest; n++){
+			var clone_title_grade = title_grade.cloneNode(true);
+			clone_title_grade .children[0].children[0].innerHTML = assign.innerHTML +parseInt(n+1);
+			var test_score = clone_title_grade.children[1].children[0];
+			test_score.setAttribute("oninput","test_score(0)");
+			table_body.appendChild(clone_title_grade);
 		}
+		for (var i = 1; i < bt ; i++){
+			var clone_headline = headline.cloneNode(true);
+			var assign  = clone_headline.children[0].children[0];
+			var per = clone_headline.children[0].children[1];			
+			assign.innerHTML = document.getElementsByClassName("assignment")[i].value;
+			per.innerHTML = "Percentage : "+ document.getElementsByClassName("percentage")[i].value+"%";
+			table_body.appendChild(clone_headline);
+			var clone_title_grade = title_grade.cloneNode(true);
+			clone_title_grade .children[0].children[0].innerHTML = assign.innerHTML + "1";
+			var test_score = clone_title_grade.children[1].children[0];
+			test_score.setAttribute("oninput","test_score("+i+")");
+			table_body.appendChild(clone_title_grade);
+			var number_miniTest = document.getElementsByClassName("smallTest")[i].value;
+			
+			for(var j = 1; j < number_miniTest; j++){
+				var clone_title_grade = title_grade.cloneNode(true);
+				clone_title_grade .children[0].children[0].innerHTML = assign.innerHTML +parseInt(j+1);
+				var test_score = clone_title_grade.children[1].children[0];
+				test_score.setAttribute("oninput","test_score("+i+")");
+				table_body.appendChild(clone_title_grade);
+			}
+		}
+		second_table.style.display = "block";
 	}
 }
 
+function test_score(n){
+	n = parseInt(n);
+	var test_array = [];
+	var second_table = document.getElementById("second-table");
+	var title_grade = second_table.getElementsByClassName("headline")[n];
+	var number_miniTest = document.getElementsByClassName("smallTest")[n].value;
+	var list_miniTest = document.getElementsByClassName("list_miniTest")[n];
+
+	for (var i = 0 ; i < number_miniTest; i++){
+		var title_grade = title_grade.nextElementSibling;
+		var score = title_grade.children[1].children[0];
+		if (score.style.color == "red"){
+			test_array.push("");
+		}
+		else
+			test_array.push(score.value);
+	}
+	return test_array;
+}
+
 function CreateBigTest(){
+	var original = document.getElementsByClassName("default")[0];
 	var per = document.getElementsByClassName("percentage")[0];
 	var bt = document.getElementById("bigTest").value;
 	var con = document.getElementById("content");
 	var percent_each_test = 100/bt;
 	per.value = percent_each_test;
 	
-	while (con.firstChild){
-		con.removeChild(con.firstChild);
+	while (con.lastChild && con.childElementCount!=1){
+		con.removeChild(con.lastChild);
 	}
 	
 	if (bt <= 15){
 		for (var i = 1; i <bt ; i++){	
-			var original = document.getElementsByClassName("default")[0];
+			// var original = document.getElementsByClassName("default")[0];
 			var clone = original.cloneNode(true); 
-			clone.getElementsByTagName("p")[0].innerHTML = "Assignment "+(i+1);
+			// clone.getElementsByTagName("p")[0].innerHTML = "Assignment "+(i+1);
 			con.appendChild(clone);
 			var per = document.getElementsByClassName("percentage")[i];
 			var miniTest = document.getElementsByClassName("smallTest")[i];
 			var n = i;
 			miniTest.setAttribute("oninput","createTest("+n+")");
-			per.setAttribute("oninput","Grade_and_percentage("+n+")");
+			// per.setAttribute("oninput","Grade_and_percentage("+n+")");
 			per.setAttribute("value", percent_each_test);
 		}
 	}
@@ -67,28 +119,12 @@ function Grade_and_percentage(n){
 	return grade_and_percentage;
 }
 
-function test_score(n){
-	n = parseInt(n);
-	var test_array = [];
-	var number_miniTest = document.getElementsByClassName("smallTest")[n].value;
-	var list_miniTest = document.getElementsByClassName("list_miniTest")[n];
-	
-	for (var i = 0 ; i < number_miniTest; i++){
-		var score = list_miniTest.children[i*2];
-		if (score.style.color == "red"){
-			test_array.push("");
-		}
-		else
-			test_array.push(score.value);
-	}
-	return test_array;
-}
 
 function GPA_grade(){
 	var bt = document.getElementById("bigTest").value;
 	var percent_total = 0;
 	var grade_percent =[];
-	var gpa= 0;
+	var gpa = 0;
 	for (var i =0; i< bt ; i ++){
 		var array = Grade_and_percentage(i);
 		percent_total += parseInt(array[1]);
@@ -120,10 +156,9 @@ function Estimate(){
 		}
 		estimate_percentage += unknow*per_each_test;
 	}
-
 	if (estimate_percentage != 0){
 		var estimate_score = ((parseInt(goal)-current_test_score))/estimate_percentage;
-		if (estimate_score >100){
+		if (estimate_score > 100){
 			document.getElementById("warning").innerHTML = "YOU WILL NEVER REACH YOUR GOAL LOL!";
 			return;
 		}
@@ -133,14 +168,14 @@ function Estimate(){
 		document.getElementById("warning").innerHTML = "YOU DONT HAVE ANY TEST LEFT TO ESTIMATE";
 		return;
 	}
-
 	for (var i = 0; i < bt ; i++ ){
-		var list_miniTest = document.getElementsByClassName("list_miniTest")[i];
+		var title_grade = document.getElementsByClassName("headline")[i];
 		var number_miniTest = document.getElementsByClassName("smallTest")[i].value;
 		for (var n = 0 ; n < number_miniTest; n++){
-			var score = list_miniTest.children[n*2];
+			var title_grade = title_grade.nextElementSibling;
+			var score = title_grade.children[1].children[0];
 			if (score.value == "" || score.style.color == "red"){
-				list_miniTest.children[n*2].value = estimate_score;
+				score.value = estimate_score;
 				score.style.color = "red";
 			}
 		}
