@@ -54,8 +54,7 @@ function CreateSyllabus(){
 			per.innerHTML = "Percentage : "+ document.getElementsByClassName("percentage")[i].value+"%";
 			table_body.appendChild(clone_headline);
 			var clone_title_grade = title_grade.cloneNode(true);
-			
-			if(assign.innerHTML != ""){
+			if (assign.innerHTML != ""){
 				clone_title_grade .children[0].children[0].innerHTML = assign.innerHTML + "1";
 			}
 			var test_score = clone_title_grade.children[1].children[0];
@@ -66,7 +65,7 @@ function CreateSyllabus(){
 			for(var j = 1; j < number_miniTest; j++){
 				var clone_title_grade = title_grade.cloneNode(true);
 				if(assign.innerHTML != ""){
-					clone_title_grade .children[0].children[0].innerHTML = assign.innerHTML +parseInt(j+1);
+					clone_title_grade.children[0].children[0].innerHTML = assign.innerHTML +parseInt(j+1);
 				}
 				var test_score = clone_title_grade.children[1].children[0];
 				test_score.setAttribute("oninput","test_score("+i+")");
