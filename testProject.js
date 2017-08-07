@@ -196,14 +196,26 @@ function semester_GPA(){
 	for (var i = 0; i < number_course; i++){
 		var grade = third_table_body.getElementsByClassName("semester_grade")[i].children[0].value
 		var credit = third_table.getElementsByClassName("semester_credit")[i].value;
-		if (grade =="-1" || credit ==""){
-			document.getElementById("GPA").innerHTML= "PLEASE FILL IN ALL THE GRADE AND CREDIT";
+		if (grade =="-1" && credit ==""){
+			grade = 0
+			credit = 0
+		}
+		else if (grade =="-1"){
+			document.getElementById("GPA").innerHTML= "YOU ARE MISSING ONE OF THE GRADE";
+			return;
+		}
+		else if (credit ==""){
+			document.getElementById("GPA").innerHTML= "YOU ARE MISSING ONE OF THE CREDIT";
 			return;
 		}
 		grade = parseInt(grade);
 		credit = parseInt(credit);
 		total_grade += grade*credit;
 		total_credit += credit; 
+	}
+	if (total_credit == 0){
+		document.getElementById("GPA").innerHTML = 0;
+		return;
 	}
 	var semester_gpa = total_grade/total_credit;
 	document.getElementById("GPA").innerHTML = semester_gpa;
@@ -216,5 +228,4 @@ function Add_course(){
 	var course_number = clone_grade_credit.children[0].children[0];
 	course_number.setAttribute("placeholder","e.g. Course " + parseInt(number_course+1));
 	third_table_body.insertBefore(clone_grade_credit,third_table_body.children[number_course])
-
 }
