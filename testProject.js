@@ -31,7 +31,10 @@ function CreateSyllabus(){
 	assign.innerHTML = document.getElementsByClassName("assignment")[0].value;
 	per.innerHTML = "Percentage : "+ document.getElementsByClassName("percentage")[0].value+"%";
 	
-	if (assign.innerHTML != ""){
+	if (assign.innerHTML == ""){
+		title_grade.children[0].children[0].innerHTML = "";
+	}
+	else {
 		title_grade.children[0].children[0].innerHTML = assign.innerHTML+"1";
 	}
 	
@@ -39,7 +42,10 @@ function CreateSyllabus(){
 		var number_miniTest = document.getElementsByClassName("smallTest")[0].value;
 		for(var n = 1; n< number_miniTest; n++){
 			var clone_title_grade = title_grade.cloneNode(true);
-			if(assign.innerHTML != ""){
+			if(assign.innerHTML == ""){
+				clone_title_grade.children[0].children[0].innerHTML = "";
+			}
+			else{
 				clone_title_grade.children[0].children[0].innerHTML = assign.innerHTML +parseInt(n+1);
 			}
 			var test_score = clone_title_grade.children[1].children[0];
@@ -53,9 +59,13 @@ function CreateSyllabus(){
 			assign.innerHTML = document.getElementsByClassName("assignment")[i].value;
 			per.innerHTML = "Percentage : "+ document.getElementsByClassName("percentage")[i].value+"%";
 			table_body.appendChild(clone_headline);
+			
 			var clone_title_grade = title_grade.cloneNode(true);
-			if (assign.innerHTML != ""){
-				clone_title_grade .children[0].children[0].innerHTML = assign.innerHTML + "1";
+			if (assign.innerHTML == ""){
+				clone_title_grade.children[0].children[0].innerHTML = "";
+			}
+			else{
+				clone_title_grade.children[0].children[0].innerHTML = assign.innerHTML + "1";
 			}
 			var test_score = clone_title_grade.children[1].children[0];
 			test_score.setAttribute("oninput","test_score("+i+")");
@@ -64,7 +74,10 @@ function CreateSyllabus(){
 			
 			for(var j = 1; j < number_miniTest; j++){
 				var clone_title_grade = title_grade.cloneNode(true);
-				if(assign.innerHTML != ""){
+				if(assign.innerHTML == ""){
+					clone_title_grade.children[0].children[0].innerHTML = "";
+				}
+				else{
 					clone_title_grade.children[0].children[0].innerHTML = assign.innerHTML +parseInt(j+1);
 				}
 				var test_score = clone_title_grade.children[1].children[0];
