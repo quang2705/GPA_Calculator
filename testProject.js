@@ -15,7 +15,6 @@ function CreateBigTest(){
 		}
 	}
 }
-
 function CreateSyllabus(){
 	var bt = document.getElementById("bigTest").value;
 	var second_table = document.getElementById("second-table");
@@ -84,7 +83,9 @@ function test_score(n){
 	var second_table = document.getElementById("second-table");
 	var title_grade = second_table.getElementsByClassName("headline")[n];
 	var number_miniTest = document.getElementsByClassName("smallTest")[n].value;
-
+	if (number_miniTest == ""){
+		number_miniTest = 1;
+	}
 	for (var i = 0 ; i < number_miniTest; i++){
 		var title_grade = title_grade.nextElementSibling;
 		var score = title_grade.children[1].children[0];
@@ -97,29 +98,28 @@ function test_score(n){
 	return test_array;
 }
 
-
 function Grade_and_percentage(n){
 	n = parseInt(n);
 	var percentage = document.getElementsByClassName("percentage")[n].value;
 	var grade_and_percentage = [];
 	var array = test_score(n);
+	console.log("array", array);
 	var denominator = 0;
 	var total = 0;
-
 	for (var i = 0; i < array.length; i++){
-		if (array[i] != "")
-		{
+		if (array[i] != ""){
 			denominator +=1;
 			total += parseFloat(array[i]);
 		}
 	}
+	if (total == 0 || percentage ==0){
+		return[0,0];
+	}
 	var final_grade = total/denominator;
 	grade_and_percentage.push(final_grade);
 	grade_and_percentage.push(percentage);
-	// document.getElementsByClassName("current-grade")[n].innerHTML = final_grade;
 	return grade_and_percentage;
 }
-
 
 function GPA_grade(){
 	var bt = document.getElementById("bigTest").value;
@@ -128,6 +128,7 @@ function GPA_grade(){
 	var gpa = 0;
 	for (var i =0; i< bt ; i ++){
 		var array = Grade_and_percentage(i);
+		console.log("grade and percentage", array);
 		percent_total += parseInt(array[1]);
 	}
 
@@ -172,6 +173,9 @@ function Estimate(){
 	for (var i = 0; i < bt ; i++ ){
 		var title_grade = document.getElementsByClassName("headline")[i];
 		var number_miniTest = document.getElementsByClassName("smallTest")[i].value;
+		if (number_miniTest ==""){
+			number_miniTest =1;
+		}
 		for (var n = 0 ; n < number_miniTest; n++){
 			var title_grade = title_grade.nextElementSibling;
 			var score = title_grade.children[1].children[0];
@@ -181,4 +185,36 @@ function Estimate(){
 			}
 		}
 	}
+}
+
+function semester_GPA(){
+	var total_grade = 0
+	var total_credit = 0
+	var third_table = document.getElementById("third-table");
+	var third_table_body = third_table.getElementsByClassName("third-table-body")[0];
+	var number_course = third_table_body.childElementCount-1;
+	for (var i = 0; i < number_course; i++){
+		var grade = third_table_body.getElementsByClassName("semester_grade")[i].children[0].value
+		var credit = third_table.getElementsByClassName("semester_credit")[i].value;
+		if (grade =="-1" || credit ==""){
+			document.getElementById("GPA").innerHTML= "PLEASE FILL IN ALL THE GRADE AND CREDIT";
+			return;
+		}
+		grade = parseInt(grade);
+		credit = parseInt(credit);
+		total_grade += grade*credit;
+		total_credit += credit; 
+	}
+	var semester_gpa = total_grade/total_credit;
+	document.getElementById("GPA").innerHTML = semester_gpa;
+}
+
+function Add_course(){
+	var third_table_body = document.getElementsByClassName("third-table-body")[0];
+	var number_course = third_table_body.childElementCount-1;
+	var clone_grade_credit = third_table_body.children[0].cloneNode(true);
+	var course_number = clone_grade_credit.children[0].children[0];
+	course_number.setAttribute("placeholder","e.g. Course " + parseInt(number_course+1));
+	third_table_body.insertBefore(clone_grade_credit,third_table_body.children[number_course])
+
 }

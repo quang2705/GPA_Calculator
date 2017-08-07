@@ -62,12 +62,12 @@
     <!-- Main Content -->
     <div class="text-left">
       <ul class="nav nav-tabs">
-        <li class="active col-sm-6"><a data-toggle="tab" href="#home">GPA Estimation</a></li>
-        <li class=" col-sm-6"><a data-toggle="tab" href="#menu1">GPA Calculation</a></li>
+        <li class="active col-sm-6"><a data-toggle="tab" href="#gpa_estimation">GPA Estimation</a></li>
+        <li class=" col-sm-6"><a data-toggle="tab" href="#gpa_calculator">GPA Calculation</a></li>
       </ul>
 
       <div class="tab-content">
-        <div id="home" class="tab-pane fade in active">
+        <div id="gpa_estimation" class="tab-pane fade in active">
             <div class="container" id ="first-table">
                 <div class="form-group">
                     <label>Set Your Goal (100 Point Scale) </label>
@@ -154,16 +154,135 @@
             <p id ="warning"></p>
         </div>
         </div>
-      <div id="menu1" class="tab-pane fade">
-        <h3>Menu 1</h3>
+      <div id="gpa_calculator" class="tab-pane fade">
+        <div class="container" id="third-table"> 
+            <table class ="table table-bordered">
+              <thead>
+                <tr>
+                  <th colspan="3" style="background-color:#f7f8f9">Semester</th>
+                </tr>
+              </thead>
+              <tbody class ="third-table-body">
+                <tr>
+                  <td><input placeholder="e.g. Course 1"></td>
+                  <td class="semester_grade">Grade: 
+                    <select style="width: 75%">
+                     <option value = "-1">_</option>
+                     <option value = "4">A</option>
+                     <option value = "3.7">A-</option>
+                     <option value = "3.3">B+</option>
+                     <option value = "3">B</option>
+                     <option value = "2.7">B-</option>
+                     <option value = "2.3">C+</option>
+                     <option value = "2">C</option>
+                     <option value = "1.7">C-</option>
+                     <option value = "1.3">D+</option>
+                     <option value = "1">D</option>
+                     <option value = "0">F</option>
+                    </select>
+                  </td>
+                  <td>Credit: <input class ="semester_credit" type="text" name="" val=""></td>
+                </tr>
+                <tr>
+                  <td><input placeholder="e.g. Course 2"></td>
+                  <td class="semester_grade">Grade: 
+                    <select style="width: 75%">
+                     <option value = "-1">_</option>
+                     <option value = "4">A</option>
+                     <option value = "3.7">A-</option>
+                     <option value = "3.3">B+</option>
+                     <option value = "3">B</option>
+                     <option value = "2.7">B-</option>
+                     <option value = "2.3">C+</option>
+                     <option value = "2">C</option>
+                     <option value = "1.7">C-</option>
+                     <option value = "1.3">D+</option>
+                     <option value = "1">D</option>
+                     <option value = "0">F</option>
+                    </select>
+                  </td>
+                  <td>Credit: <input class ="semester_credit" type="text" name="" val=""></td>
+                </tr>
+                <tr>
+                  <td><input placeholder="e.g. Course 3"></td>
+                  <td class="semester_grade">Grade: 
+                    <select style="width: 75%">
+                     <option value = "-1">_</option>
+                     <option value = "4">A</option>
+                     <option value = "3.7">A-</option>
+                     <option value = "3.3">B+</option>
+                     <option value = "3">B</option>
+                     <option value = "2.7">B-</option>
+                     <option value = "2.3">C+</option>
+                     <option value = "2">C</option>
+                     <option value = "1.7">C-</option>
+                     <option value = "1.3">D+</option>
+                     <option value = "1">D</option>
+                     <option value = "0">F</option>
+                    </select>
+                  </td>
+                  <td>Credit: <input class ="semester_credit" type="text" name="" val=""></td>
+                </tr>
+                <tr>
+                  <td><input placeholder="e.g. Course 4"></td>
+                  <td class="semester_grade">Grade: 
+                    <select style="width: 75%">
+                     <option value = "-1">_</option>
+                     <option value = "4">A</option>
+                     <option value = "3.7">A-</option>
+                     <option value = "3.3">B+</option>
+                     <option value = "3">B</option>
+                     <option value = "2.7">B-</option>
+                     <option value = "2.3">C+</option>
+                     <option value = "2">C</option>
+                     <option value = "1.7">C-</option>
+                     <option value = "1.3">D+</option>
+                     <option value = "1">D</option>
+                     <option value = "0">F</option>
+                    </select>
+                  </td>
+                  <td>Credit: <input class ="semester_credit" type="text" name="" val=""></td>
+                </tr>
+                <tr>
+                  <td><input placeholder="e.g. Course 5"></td>
+                  <td class="semester_grade">Grade: 
+                    <select style="width: 75%">
+                     <option value = "-1">_</option>
+                     <option value = "4">A</option>
+                     <option value = "3.7">A-</option>
+                     <option value = "3.3">B+</option>
+                     <option value = "3">B</option>
+                     <option value = "2.7">B-</option>
+                     <option value = "2.3">C+</option>
+                     <option value = "2">C</option>
+                     <option value = "1.7">C-</option>
+                     <option value = "1.3">D+</option>
+                     <option value = "1">D</option>
+                     <option value = "0">F</option>
+                    </select>
+                  </td>
+                  <td>Credit: <input class ="semester_credit" type="text" name="" val=""></td>
+                </tr>
+                <tr>
+                  <td colspan="3">
+                    <button class="another_course" onclick="Add_course()">
+                      Add another course
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+        <div>
+          <button onclick ="semester_GPA()">CALCULATE
+          </button>
+          <div id="GPA"></div>
+        </div>
       </div>
 
       </div>
     </div>
- 
- <!--  </div>
-  </div>
-</div> -->
+    
 <footer class="container-fluid text-center">
   <p>Footer Text</p>
 </footer>
