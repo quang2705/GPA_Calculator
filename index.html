@@ -27,6 +27,8 @@
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
+    <link href="https://fonts.googleapis.com/css?family=Poppins:500" rel="stylesheet">
+
 
     <script type="text/javascript" src="testProject.js"></script>
 
@@ -95,7 +97,7 @@
 
                     <tbody id = "content">
                       <tr class = "default">
-                        <td><input class="assignment" placeholder="e.g. quiz, project, final" type="text"></td>
+                        <td><input class="assignment" placeholder="e.g. Quiz, Project, Final" type="text"></td>
                         <td><input type="text" class ="percentage" value =""></td>
                         <td><input type="text" class="smallTest" value =""></td>
                       </tr>
@@ -151,14 +153,12 @@
                   </tbody>
                 </table>
             </div>
-        <div>
-            <button onclick = "GPA_grade()">CALCULATE</button>
-            <p id="final_grade"></p>
-        </div>
-        <div id ="estimate">
-            <button onclick = "Estimate()">ESTIMATE</button>
+
+        <div class="container" id ="estimate">
+            <button class="estimate--btn" onclick = "Estimate()">ESTIMATE</button>
             <p id ="warning"></p>
         </div>
+
         </div>
         
       <div id="gpa_calculator" class="tab-pane fade">
@@ -280,8 +280,8 @@
               </tbody>
             </table>
         </div>
-        <div>
-          <button onclick ="semester_GPA()">CALCULATE
+        <div id="calculate--btn">
+          <button onclick ="semester_GPA()" id="calculate">CALCULATE
           </button>
           <div id="GPA"></div>
         </div>
@@ -290,9 +290,6 @@
       </div>
     </div>
     
-<footer class="container-fluid text-center">
-  <p>Footer Text</p>
-</footer>
 </body>
 
 <script>
@@ -300,7 +297,6 @@
     $(".create-syllabus").click(function(){
         $("#first-table").hide(1000);
      });
-
     $(".go-back").click(function(){
       $("#first-table").show(1000);
       $("#second-table").hide(1000);
